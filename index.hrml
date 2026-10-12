@@ -1,0 +1,451 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filé de Rubinaldo e Zélia - Cardápio Digital</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#121212',
+                        brandCard: '#1e1e1e',
+                        brandRed: '#c51b24',
+                        brandGold: '#f59e0b',
+                        brandGoldLight: '#fcd34d',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cinzel', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212;
+            color: #f3f4f6;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .red-glow {
+            box-shadow: 0 0 25px rgba(197, 27, 36, 0.3);
+        }
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(245, 158, 11, 0.2);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #18181b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3f3f46;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c51b24;
+        }
+    </style>
+</head>
+<body class="bg-brandDark min-h-screen pb-24 md:pb-12 text-gray-100 selection:bg-brandRed selection:text-white">
+
+    <!-- Header / Banner -->
+    <header class="relative bg-gradient-to-b from-brandRed/40 via-brandDark to-brandDark border-b border-zinc-800 pt-8 pb-12 px-4 shadow-2xl overflow-hidden">
+        <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-block p-2 bg-brandRed/20 rounded-full border border-brandRed/40 mb-3 animate-pulse">
+                <i class="fa-solid fa-utensils text-brandGold text-2xl px-2"></i>
+            </div>
+            <h1 class="font-serif text-3xl md:text-5xl font-extrabold text-white tracking-wide uppercase mb-2">
+                Filé de <span class="gold-gradient-text">Rubinaldo e Zélia</span>
+            </h1>
+            <p class="text-brandGoldLight text-sm md:text-base font-medium tracking-widest uppercase mb-4">
+                "Qualidade, sabor e compromisso!"
+            </p>
+            <div class="inline-flex items-center gap-2 bg-zinc-900/80 border border-zinc-700/60 px-4 py-2 rounded-full text-xs md:text-sm text-zinc-300 shadow-lg">
+                <i class="fa-solid fa-location-dot text-brandRed"></i>
+                <span>Estamos localizados ao lado da delegacia</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-4 mt-8 grid grid-cols-1 md:grid-cols-12 gap-8">
+        
+        <!-- Menu Items Column -->
+        <div class="md:col-span-7 space-y-8">
+            
+            <!-- Porções Section -->
+            <section>
+                <div class="flex items-center justify-between mb-6 border-b border-zinc-800 pb-3">
+                    <h2 class="font-serif text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="w-2.5 h-6 bg-brandRed rounded-full inline-block"></span>
+                        Nossas Porções
+                    </h2>
+                    <span class="text-xs text-zinc-400 bg-zinc-800 px-3 py-1 rounded-full">Escolha o tamanho</span>
+                </div>
+
+                <div class="grid grid-cols-1 gap-4" id="portions-container">
+                    <!-- Javascript will render portions here -->
+                </div>
+            </section>
+
+            <!-- Acréscimos Section -->
+            <section>
+                <div class="flex items-center justify-between mb-6 border-b border-zinc-800 pb-3">
+                    <h2 class="font-serif text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="w-2.5 h-6 bg-brandGold rounded-full inline-block"></span>
+                        Acréscimos Opcionais
+                    </h2>
+                    <span class="text-xs text-zinc-400 bg-zinc-800 px-3 py-1 rounded-full">Personalize seu prato</span>
+                </div>
+
+                <div class="grid grid-cols-1 gap-4" id="extras-container">
+                    <!-- Javascript will render extras here -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Cart & Checkout Column -->
+        <div class="md:col-span-5">
+            <div class="sticky top-6 bg-brandCard border border-zinc-800 rounded-2xl p-5 shadow-2xl red-glow">
+                <div class="flex items-center justify-between pb-4 border-b border-zinc-800 mb-4">
+                    <h3 class="font-serif text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-cart-shopping text-brandRed"></i> Seu Pedido
+                    </h3>
+                    <button onclick="clearCart()" class="text-xs text-zinc-400 hover:text-brandRed transition-colors underline">
+                        Limpar tudo
+                    </button>
+                </div>
+
+                <!-- Cart Items Container -->
+                <div id="cart-items" class="space-y-3 max-h-60 overflow-y-auto pr-1 mb-4">
+                    <div class="text-center py-8 text-zinc-500 text-sm">
+                        <i class="fa-solid fa-basket-shopping text-3xl mb-2 opacity-30"></i>
+                        <p>Seu carrinho está vazio.<br>Selecione uma porção ao lado!</p>
+                    </div>
+                </div>
+
+                <!-- Order Form Details -->
+                <div class="space-y-3 border-t border-zinc-800 pt-4 mb-4">
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-400 mb-1">Seu Nome:</label>
+                        <input type="text" id="client-name" placeholder="Digite seu nome completo" 
+                            class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-brandRed transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-400 mb-1">Endereço de Entrega / Retirada:</label>
+                        <input type="text" id="client-address" placeholder="Rua, Número, Bairro, Ponto de ref." 
+                            class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-brandRed transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-400 mb-1">Forma de Pagamento:</label>
+                        <select id="payment-method" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-brandRed transition-colors">
+                            <option value="PIX">PIX</option>
+                            <option value="Dinheiro">Dinheiro (Informar troco)</option>
+                            <option value="Cartão de Crédito/Débito">Cartão de Crédito / Débito</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-400 mb-1">Observações:</label>
+                        <input type="text" id="client-obs" placeholder="Ex: Sem cebola, ponto da carne..." 
+                            class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-brandRed transition-colors">
+                    </div>
+                </div>
+
+                <!-- WhatsApp Selection -->
+                <div class="border-t border-zinc-800 pt-4 mb-4">
+                    <label class="block text-xs font-medium text-zinc-400 mb-2">Enviar pedido para qual WhatsApp?</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="cursor-pointer border border-zinc-700 bg-zinc-900/50 hover:border-green-500 rounded-xl p-2.5 flex items-center gap-2 transition-all has-[:checked]:border-green-500 has-[:checked]:bg-green-950/20">
+                            <input type="radio" name="whatsapp-target" value="rubinauro" checked class="text-green-600 focus:ring-0">
+                            <div>
+                                <p class="text-xs font-bold text-white">Rubinauro</p>
+                                <p class="text-[10px] text-zinc-400">(84) 98825-1208</p>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer border border-zinc-700 bg-zinc-900/50 hover:border-green-500 rounded-xl p-2.5 flex items-center gap-2 transition-all has-[:checked]:border-green-500 has-[:checked]:bg-green-950/20">
+                            <input type="radio" name="whatsapp-target" value="zelia" class="text-green-600 focus:ring-0">
+                            <div>
+                                <p class="text-xs font-bold text-white">Zélia</p>
+                                <p class="text-[10px] text-zinc-400">(84) 99932-2195</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Total & Checkout Button -->
+                <div class="border-t border-zinc-800 pt-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-zinc-400 font-medium">Total do Pedido:</span>
+                        <span id="cart-total" class="text-2xl font-bold gold-gradient-text">R$ 0,00</span>
+                    </div>
+
+                    <button onclick="checkoutWhatsApp()" class="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-green-900/30 flex items-center justify-center gap-3 transition-all transform active:scale-95">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        Enviar Pedido no WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast / Alert Modal Customizado -->
+    <div id="custom-toast" class="fixed bottom-5 right-5 z-50 transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-zinc-900 border border-zinc-700 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
+            <i id="toast-icon" class="fa-solid fa-circle-check text-green-500 text-xl"></i>
+            <span id="toast-msg" class="text-sm font-medium">Item adicionado ao carrinho!</span>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Data base from store menu
+        const menuData = {
+            portions: [
+                { id: 'p1', name: 'Individual', description: 'Porção saborosa individual com filé selecionado.', price: 23.00, icon: 'fa-user' },
+                { id: 'p2', name: 'Para 2 Pessoas', description: 'Ideal para compartilhar com quem você gosta.', price: 43.00, icon: 'fa-user-group' },
+                { id: 'p3', name: 'Para 3 Pessoas', description: 'Porção generosa para 3 pessoas.', price: 57.00, icon: 'fa-users' },
+                { id: 'p4', name: 'Para 4 Pessoas', description: 'Perfeita para a família toda saborear.', price: 63.00, icon: 'fa-users' },
+                { id: 'p5', name: 'Para 5 Pessoas', description: 'Festa de sabor garantida para 5 pessoas.', price: 73.00, icon: 'fa-users' },
+                { id: 'p6', name: 'Para 6 Pessoas', description: 'A maior e mais completa porção da casa.', price: 83.00, icon: 'fa-users' }
+            ],
+            extras: [
+                { id: 'e1', name: 'Acréscimo de Bife', description: 'Bife suculento extra preparado na chapa.', price: 8.00, image: 'https://placehold.co/100x100/2a1215/f59e0b?text=Bife' },
+                { id: 'e2', name: 'Molhos (A porção)', description: 'Molho especial da casa para acompanhar.', price: 8.00, image: 'https://placehold.co/100x100/2a1215/f59e0b?text=Molho' },
+                { id: 'e3', name: 'Batata Frita (A porção)', description: 'Batatas fritas crocantes e sequinhas.', price: 12.00, image: 'https://placehold.co/100x100/2a1215/f59e0b?text=Batata' }
+            ]
+        };
+
+        // Cart state
+        let cart = [];
+
+        // Initialize Menu Render
+        function renderMenu() {
+            const portionsContainer = document.getElementById('portions-container');
+            const extrasContainer = document.getElementById('extras-container');
+
+            // Render Portions
+            portionsContainer.innerHTML = menuData.portions.map(item => `
+                <div class="bg-brandCard border border-zinc-800 hover:border-zinc-700 rounded-2xl p-4 flex items-center justify-between transition-all shadow-md group">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-700 flex items-center justify-center text-brandGold group-hover:border-brandRed transition-colors">
+                            <i class="fa-solid ${item.icon} text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">${item.name}</h3>
+                            <p class="text-xs text-zinc-400 line-clamp-1">${item.description}</p>
+                            <span class="text-sm font-extrabold text-brandGold mt-1 inline-block">R$ ${item.price.toFixed(2).replace('.', ',')}</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('portion', '${item.id}')" class="bg-brandRed hover:bg-red-700 text-white font-medium text-xs px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-red-900/20 flex items-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-plus"></i> Adicionar
+                    </button>
+                </div>
+            `).join('');
+
+            // Render Extras
+            extrasContainer.innerHTML = menuData.extras.map(item => `
+                <div class="bg-brandCard border border-zinc-800 hover:border-zinc-700 rounded-2xl p-4 flex items-center justify-between transition-all shadow-md group">
+                    <div class="flex items-center gap-3.5">
+                        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded-xl object-cover border border-zinc-700" onerror="this.src='https://placehold.co/100x100/1e1e1e/f59e0b?text=Foto'">
+                        <div>
+                            <h3 class="font-bold text-white text-base">${item.name}</h3>
+                            <p class="text-xs text-zinc-400 line-clamp-1">${item.description}</p>
+                            <span class="text-sm font-extrabold text-brandGold mt-1 inline-block">R$ ${item.price.toFixed(2).replace('.', ',')}</span>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('extra', '${item.id}')" class="bg-zinc-800 hover:bg-zinc-700 text-white font-medium text-xs px-4 py-2.5 rounded-xl border border-zinc-700 transition-all flex items-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-plus text-brandGold"></i> Adicionar
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Add item to cart
+        function addToCart(type, id) {
+            let item;
+            if (type === 'portion') {
+                item = menuData.portions.find(p => p.id === id);
+            } else {
+                item = menuData.extras.find(e => e.id === id);
+            }
+
+            // Check if item already exists in cart
+            const existingIndex = cart.findIndex(cartItem => cartItem.id === id && cartItem.type === type);
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    type: type,
+                    quantity: 1
+                });
+            }
+
+            updateCartUI();
+            showToast(`Adicionado: ${item.name}`);
+        }
+
+        // Update quantity in cart
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        // Clear cart
+        function clearCart() {
+            cart = [];
+            updateCartUI();
+            showToast("Carrinho limpo!", "fa-circle-exclamation");
+        }
+
+        // Update Cart UI & Calculate Total
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const totalElement = document.getElementById('cart-total');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-zinc-500 text-sm">
+                        <i class="fa-solid fa-basket-shopping text-3xl mb-2 opacity-30"></i>
+                        <p>Seu carrinho está vazio.<br>Selecione uma porção ao lado!</p>
+                    </div>
+                `;
+                totalElement.textContent = 'R$ 0,00';
+                return;
+            }
+
+            let total = 0;
+            container.innerHTML = cart.map((item, index) => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                return `
+                    <div class="bg-zinc-900/60 border border-zinc-800 rounded-xl p-3 flex items-center justify-between">
+                        <div class="flex-1 pr-2">
+                            <h4 class="text-xs font-bold text-white">${item.name}</h4>
+                            <span class="text-xs text-brandGold font-semibold">R$ ${subtotal.toFixed(2).replace('.', ',')}</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-zinc-800 rounded-lg p-1">
+                            <button onclick="updateQuantity(${index}, -1)" class="w-6 h-6 rounded bg-zinc-700 hover:bg-zinc-600 text-white flex items-center justify-center text-xs transition-colors">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                            <span class="text-xs font-bold text-white w-5 text-center">${item.quantity}</span>
+                            <button onclick="updateQuantity(${index}, 1)" class="w-6 h-6 rounded bg-zinc-700 hover:bg-zinc-600 text-white flex items-center justify-center text-xs transition-colors">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            totalElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        }
+
+        // Toast feedback notification
+        function showToast(message, iconClass = 'fa-circle-check') {
+            const toast = document.getElementById('custom-toast');
+            const msgEl = document.getElementById('toast-msg');
+            const iconEl = document.getElementById('toast-icon');
+
+            msgEl.textContent = message;
+            iconEl.className = `fa-solid ${iconClass} text-green-500 text-xl`;
+
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 2500);
+        }
+
+        // Checkout & Format WhatsApp Message
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                showToast("Adicione pelo menos um item ao carrinho!", "fa-triangle-exclamation");
+                return;
+            }
+
+            const clientName = document.getElementById('client-name').value.trim();
+            const clientAddress = document.getElementById('client-address').value.trim();
+            const paymentMethod = document.getElementById('payment-method').value;
+            const clientObs = document.getElementById('client-obs').value.trim();
+            const targetWhatsApp = document.querySelector('input[name="whatsapp-target"]:checked').value;
+
+            if (!clientName) {
+                showToast("Por favor, preencha o seu nome!", "fa-triangle-exclamation");
+                document.getElementById('client-name').focus();
+                return;
+            }
+
+            if (!clientAddress) {
+                showToast("Por favor, informe o endereço de entrega!", "fa-triangle-exclamation");
+                document.getElementById('client-address').focus();
+                return;
+            }
+
+            // Build WhatsApp formatted message
+            let message = `🍽️ *NOVO PEDIDO - FILÉ DE RUBINALDO E ZÉLIA* 🍽️\n\n`;
+            message += `👤 *Cliente:* ${clientName}\n`;
+            message += `📍 *Endereço:* ${clientAddress}\n`;
+            message += `💳 *Pagamento:* ${paymentMethod}\n`;
+            if (clientObs) {
+                message += `📝 *Obs:* ${clientObs}\n`;
+            }
+            message += `\n----------------------------------\n`;
+            message += `🛒 *ITENS DO PEDIDO:*\n`;
+
+            let total = 0;
+            cart.forEach(item => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                message += `• ${item.quantity}x ${item.name} - R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
+            });
+
+            message += `----------------------------------\n`;
+            message += `💰 *VALOR TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*\n\n`;
+            message += `_Aguardando confirmação do pedido!_`;
+
+            // Phone numbers mapping
+            const numbers = {
+                rubinauro: '5584988251208',
+                zelia: '5584999322195'
+            };
+
+            const phoneNumber = numbers[targetWhatsApp];
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            renderMenu();
+        };
+    </script>
+</body>
+</html>
+```
